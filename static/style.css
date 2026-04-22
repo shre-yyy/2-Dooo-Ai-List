@@ -1,0 +1,87 @@
+/* Reset */
+
+{
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+font-family: 'Segoe UI', sans-serif;
+}
+/* Background */
+body {
+height: 100vh;
+display: flex;
+justify-content: center;
+align-items: center;
+background: linear-gradient(135deg, #667eea, #764ba2);
+}
+
+/* Container */
+.container {
+background: rgba(255, 255, 255, 0.1);
+backdrop-filter: blur(12px);
+padding: 30px;
+border-radius: 16px;
+width: 320px;
+text-align: center;
+color: white;
+box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+}
+
+/* Heading */
+.container h2 {
+margin-bottom: 20px;
+font-weight: 600;
+}
+
+/* Input */
+#taskInput {
+width: 70%;
+padding: 10px;
+border-radius: 8px;
+border: none;
+outline: none;
+margin-bottom: 10px;
+}
+
+/* Button */
+button {
+padding: 10px 15px;
+border: none;
+border-radius: 8px;
+background: #00c9a7;
+color: white;
+cursor: pointer;
+transition: 0.3s;
+}
+
+button:hover {
+background: #00a78e;
+}
+
+/* Task list */
+#taskList {
+list-style: none;
+margin-top: 15px;
+}
+
+/* Task items */
+#taskList li {
+background: rgba(255,255,255,0.2);
+margin: 8px 0;
+padding: 10px;
+border-radius: 8px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+
+#taskInput::placeholder {
+color: rgba(255, 255, 255, 0.7);
+font-style: italic;
+}
+
+/* Completed task */
+.completed {
+text-decoration: line-through;
+opacity: 0.6;
+}
