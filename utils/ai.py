@@ -1,6 +1,6 @@
 from groq import Groq
 
-client = Groq(api_key="YOUR_API_KEY")
+client = Groq(api_key="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")
 
 def generate_plan_ai(tasks):
     prompt = f"Create a daily schedule: {tasks}"
