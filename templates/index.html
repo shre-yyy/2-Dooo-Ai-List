@@ -2,17 +2,42 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-  <h2>TODO AI</h2>
-<input type="text" id="taskInput" placeholder="What should TODO remind you?">
-<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>TODO AI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
+
 <div class="container">
-    <h2>To-Do List</h2>
-    <input type="text" id="taskInput" placeholder="Enter task">
-    <button onclick="addTask()">Add</button>
-    <ul id="taskList"></ul>
+    <h2>🤖 TODO AI</h2>
+
+    <form method="POST" action="/add">
+        <input type="text" name="task" placeholder="What should TODO remind you?" required>
+
+        <input type="date" name="date" required>
+        <input type="time" name="time" required>
+
+        <select name="priority">
+            <option>High</option>
+            <option>Medium</option>
+            <option>Low</option>
+        </select>
+
+        <button type="submit">Add</button>
+    </form>
+
+    <ul id="taskList">
+        {% for task in tasks %}
+            <li>
+                {{ task[1] }} ({{ task[4] }})
+                <a href="/complete/{{ task[0] }}">✔</a>
+                <a href="/delete/{{ task[0] }}">❌</a>
+            </li>
+        {% endfor %}
+    </ul>
+
 </div>
+
 <script src="{{ url_for('static', filename='script.js') }}"></script>
+
 </body>
 </html>
