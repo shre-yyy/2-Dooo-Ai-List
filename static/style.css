@@ -40,15 +40,23 @@ input, select {
     padding: 10px;
     margin-bottom: 10px;
     border-radius: 8px;
-    border: 1px solid #1f2937;
+    border: 1px solid #f8f8f8;
     background: #020617;
     color: #e2e8f0;
     outline: none;
+
+    color-scheme: dark;   /* ⭐ VERY IMPORTANT */
 }
 
 /* Focus effect */
 input:focus, select:focus {
     border-color: #6366f1;
+}
+
+input[type="date"],
+input[type="time"] {
+    color: #e2e8f0;
+    background: #020617;
 }
 
 /* Button */
@@ -66,6 +74,14 @@ button {
 
 button:hover {
     background: #4f46e5;
+}
+
+#aiOutput {
+    background: #020617;
+    padding: 10px;
+    border-radius: 8px;
+    white-space: pre-wrap;
+    border: 1px solid #1f2937;
 }
 
 /* Task list */
