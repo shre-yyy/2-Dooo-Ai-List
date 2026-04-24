@@ -10,6 +10,7 @@
 <div class="container">
     <h2>🤖 TODO AI</h2>
 
+    <!-- FORM -->
     <form method="POST" action="/add">
         <input type="text" name="task" placeholder="What should TODO remind you?" required>
 
@@ -22,20 +23,59 @@
             <option>Low</option>
         </select>
 
-        <button type="submit">Add</button>
+        <button type="submit">Add Task</button>
     </form>
 
+    <!-- AI BUTTONS -->
+    <div class="ai-buttons">
+        <button type="button" class="ai-btn" onclick="getPlan()">🤖 Plan My Day</button>
+        <button type="button" class="ai-btn" onclick="getSuggestions()">💡 Suggestions</button>
+    </div>
+
+    <!-- AI OUTPUT -->
+    <pre id="aiOutput"></pre>
+
+    <!-- TASK LIST -->
     <ul id="taskList">
         {% for task in tasks %}
-            <li>
-                {{ task[1] }} ({{ task[4] }})
+        <li>
+            <div class="task-text">
+                <span>{{ task[1] }}</span>
+                <small>{{ task[2] }} | {{ task[3] }} | {{ task[4] }}</small>
+            </div>
+
+            <div class="task-actions">
                 <a href="/complete/{{ task[0] }}">✔</a>
                 <a href="/delete/{{ task[0] }}">❌</a>
-            </li>
+            </div>
+        </li>
         {% endfor %}
     </ul>
 
 </div>
+
+<!-- JAVASCRIPT -->
+<script>
+async function getPlan() {
+    const output = document.getElementById("aiOutput");
+    output.textContent = "Thinking... 🤖";
+
+    const res = await fetch('/ai-plan');
+    const data = await res.json();
+
+    output.textContent = data.plan;
+}
+
+async function getSuggestions() {
+    const output = document.getElementById("aiOutput");
+    output.textContent = "Analyzing... 💡";
+
+    const res = await fetch('/ai-suggestions');
+    const data = await res.json();
+
+    output.textContent = data.suggestions;
+}
+</script>
 
 </body>
 </html>
