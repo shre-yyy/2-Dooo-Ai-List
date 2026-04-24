@@ -41,14 +41,11 @@ def home():
         selected_date = date.today().isoformat()
 
     conn = db()
-    tasks = conn.execute(
-        "SELECT * FROM tasks WHERE date=?",
-        (selected_date,)
-    ).fetchall()
+    tasks = conn.execute("SELECT * FROM tasks").fetchall()
     conn.close()
 
     total = len(tasks)
-    done = len([t for t in tasks if t[4] == "done"])
+    done = len([t for t in tasks if t[5] == "done"])
     score = int((done/total)*100) if total > 0 else 0
 
     return render_template("index.html",
@@ -134,7 +131,6 @@ def fallback(tasks):
         t += 1
 
     return plan
-
 
 def fallback_suggestions(tasks):
     s=""
