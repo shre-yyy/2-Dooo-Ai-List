@@ -1,113 +1,186 @@
-/* Reset */
+/* RESET */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-family: 'Segoe UI', sans-serif;
 }
 
-/* Background */
+/* BACKGROUND */
 body {
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #0f172a; /* deep navy */
-    color: #e2e8f0;
+    background: radial-gradient(circle at top, #0f172a, #020617);
 }
 
-/* Container */
+/* CONTAINER */
 .container {
-    background: #111827;
-    padding: 30px;
-    border-radius: 16px;
     width: 360px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.6);
-    border: 1px solid rgba(255,255,255,0.05);
+    padding: 30px 25px;
+    border-radius: 18px;
+
+    background: rgba(10, 15, 30, 0.8);
+    backdrop-filter: blur(20px);
+
+    border: 1px solid rgba(255, 215, 0, 0.15);
+
+    box-shadow: 
+        0 10px 40px rgba(0,0,0,0.6),
+        0 0 20px rgba(255, 215, 0, 0.05);
+
+    text-align: center;
+    color: #e5e7eb;
 }
 
-/* Heading */
+/* HEADING */
 .container h2 {
-    text-align: center;
-    margin-bottom: 20px;
-    font-weight: 500;
+    margin-bottom: 25px;
+    font-weight: 600;
     letter-spacing: 1px;
 }
 
-/* Inputs */
+/* INPUTS */
 input, select {
     width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 8px;
-    border: 1px solid #f8f8f8;
+    padding: 12px;
+    margin-bottom: 14px;
+
+    border-radius: 10px;
+    border: 1px solid #1f2937;
+
     background: #020617;
-    color: #e2e8f0;
+    color: #e5e7eb;
+
     outline: none;
-
-    color-scheme: dark;   /* ⭐ VERY IMPORTANT */
+    transition: 0.3s;
 }
 
-/* Focus effect */
 input:focus, select:focus {
-    border-color: #6366f1;
+    border: 1px solid gold;
+    box-shadow: 0 0 8px rgba(255, 215, 0, 0.4);
 }
 
+/* DATE & TIME ICON FIX */
 input[type="date"],
 input[type="time"] {
-    color: #e2e8f0;
+    color:rgb(247, 249, 252);
     background: #020617;
 }
 
-/* Button */
-button {
-    width: 100%;
-    padding: 10px;
-    border-radius: 8px;
-    border: none;
-    background: #6366f1;
-    color: white;
+input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="time"]::-webkit-calendar-picker-indicator {
+    filter: invert(1);
     cursor: pointer;
-    transition: 0.2s;
-    font-weight: 500;
 }
 
-button:hover {
-    background: #4f46e5;
+/* MAIN BUTTON */
+button[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    border: none;
+
+    background: linear-gradient(135deg, #d4af37, #facc15);
+    color: black;
+    font-weight: 600;
+
+    cursor: pointer;
+    transition: 0.3s;
 }
 
-#aiOutput {
-    background: #020617;
+button[type="submit"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+}
+
+/* AI BUTTONS */
+.ai-buttons {
+    margin-top: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.ai-btn {
     padding: 10px;
-    border-radius: 8px;
+    border-radius: 10px;
+
+    background: transparent;
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    color: #facc15;
+
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.ai-btn:hover {
+    background: rgba(255, 215, 0, 0.1);
+}
+
+/* AI OUTPUT */
+#aiOutput {
+    margin-top: 15px;
+    padding: 12px;
+
+    border-radius: 10px;
+    background: #020617;
+
+    font-size: 13px;
     white-space: pre-wrap;
+
     border: 1px solid #1f2937;
 }
 
-/* Task list */
+/* TASK LIST */
 #taskList {
     list-style: none;
-    margin-top: 15px;
+    margin-top: 20px;
 }
 
-/* Task item */
+/* TASK ITEM */
 #taskList li {
     background: #020617;
-    padding: 10px;
-    border-radius: 8px;
-    margin-bottom: 8px;
-    font-size: 14px;
+    margin-bottom: 12px;
+    padding: 12px;
+
+    border-radius: 10px;
+    border: 1px solid #1f2937;
+
     display: flex;
     justify-content: space-between;
+    align-items: center;
+
+    transition: 0.3s;
 }
 
-/* Links */
-a {
-    text-decoration: none;
+#taskList li:hover {
+    border-color: gold;
+}
+
+/* TASK TEXT */
+.task-text span {
+    display: block;
+    font-weight: 500;
+}
+
+.task-text small {
+    font-size: 11px;
+    color: #9ca3af;
+}
+
+/* ACTION BUTTONS */
+.task-actions a {
     margin-left: 8px;
-    font-size: 14px;
+    text-decoration: none;
+    font-size: 16px;
 }
 
-a:hover {
-    opacity: 0.7;
+.task-actions a:first-child {
+    color: #22c55e;
+}
+
+.task-actions a:last-child {
+    color: #ef4444;
 }
